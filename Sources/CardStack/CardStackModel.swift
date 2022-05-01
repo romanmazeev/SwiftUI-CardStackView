@@ -2,7 +2,11 @@ import Foundation
 import SwiftUI
 import CoreGraphics
 
-public class CardStackData<Element: Identifiable, Direction: Equatable>: Identifiable {
+public class CardStackData<Element: Identifiable, Direction: Equatable>: Identifiable, Equatable {
+    public static func == (lhs: CardStackData<Element, Direction>, rhs: CardStackData<Element, Direction>) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     
     public var id: Element.ID {
         return element.id
@@ -17,7 +21,10 @@ public class CardStackData<Element: Identifiable, Direction: Equatable>: Identif
     
 }
 
-public class CardStackModel<Element: Identifiable, Direction: Equatable>: ObservableObject {
+public class CardStackModel<Element: Identifiable, Direction: Equatable>: ObservableObject, Equatable {
+    public static func == (lhs: CardStackModel<Element, Direction>, rhs: CardStackModel<Element, Direction>) -> Bool {
+        lhs.data == rhs.data
+    }
     
     @Published private(set) public var data: [CardStackData<Element, Direction>]
     @Published private(set) public var currentIndex: Int?
