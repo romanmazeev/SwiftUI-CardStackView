@@ -32,7 +32,7 @@ public protocol CardSwipeDirection: Equatable {
     
 }
 
-public enum LeftRight: CardSwipeDirection {
+public enum LeftRight: CardSwipeDirection, CaseIterable {
 
     case left, right
 
