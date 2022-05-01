@@ -7,7 +7,7 @@ public class CardStackData<Element: Identifiable, Direction: Equatable>: Identif
     public var id: Element.ID {
         return element.id
     }
-    public let element: Element
+    public var element: Element
     var direction: Direction?
     
     init(_ element: Element, direction: Direction? = nil) {
