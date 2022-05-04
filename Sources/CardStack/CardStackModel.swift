@@ -43,6 +43,13 @@ public class CardStackModel<Element: Identifiable, Direction: Equatable>: Observ
         data.append(CardStackData(element))
     }
     
+    public func dropFirst() {
+        guard let index = currentIndex else { return }
+
+        data.removeFirst()
+        currentIndex = index - 1
+    }
+    
     func indexInStack(_ dataPiece: CardStackData<Element, Direction>) -> Int? {
         guard let index = data.firstIndex(where: { $0.id == dataPiece.id }) else { return nil }
         return index - (currentIndex ?? data.count)
